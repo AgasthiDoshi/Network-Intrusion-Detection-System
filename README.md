@@ -33,7 +33,7 @@ javac -d build Backend.java Frontend.java
 java -cp build Frontend model.txt
 ```
 
-In the desktop window, choose **Open CSV**, adjust the alert threshold if needed, and choose **Export predictions** to save a CSV. The default alert threshold is `0.50`.
+The desktop window starts with four clearly labeled synthetic example flows so you can see predictions immediately. Choose **Open CSV** to analyze your own flows, adjust the alert threshold if needed, and choose **Export predictions** to save a CSV. The default alert threshold is `0.50`.
 
 For command-line analysis:
 

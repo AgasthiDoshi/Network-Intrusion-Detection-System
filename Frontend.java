@@ -26,6 +26,7 @@ public final class Frontend extends JFrame {
         @Override public boolean isCellEditable(int row, int column) { return false; }
     };
     private final JLabel summary = new JLabel("Open a CSV file to analyze network flows.");
+    private final JLabel source = new JLabel("Example synthetic flows — use Open CSV for your own data.");
     private final JSlider threshold = new JSlider(10, 90, 50);
     private final JCheckBox alertsOnly = new JCheckBox("Alerts only");
 
@@ -44,7 +45,10 @@ public final class Frontend extends JFrame {
         tools.add(new JLabel("Alert threshold"));
         tools.add(threshold);
         tools.add(alertsOnly);
-        add(tools, BorderLayout.NORTH);
+        JPanel header = new JPanel(new BorderLayout());
+        header.add(tools, BorderLayout.NORTH);
+        header.add(source, BorderLayout.SOUTH);
+        add(header, BorderLayout.NORTH);
 
         JTable table = new JTable(rows);
         table.setAutoCreateRowSorter(true);
@@ -60,6 +64,7 @@ public final class Frontend extends JFrame {
             if (chooser.showOpenDialog(this) != JFileChooser.APPROVE_OPTION) return;
             try {
                 results = Backend.readCsv(chooser.getSelectedFile().toPath()).stream().map(backend::predict).toList();
+                source.setText("Loaded: " + chooser.getSelectedFile().getName());
                 refresh();
             } catch (Exception ex) { showError(ex); }
         });
@@ -76,6 +81,17 @@ public final class Frontend extends JFrame {
         });
         threshold.addChangeListener(event -> refresh());
         alertsOnly.addActionListener(event -> refresh());
+        results = exampleFlows().stream().map(backend::predict).toList();
+        refresh();
+    }
+
+    private static List<Backend.Flow> exampleFlows() {
+        return List.of(
+            new Backend.Flow("normal-web", "TCP", 600, 12000, 42, .1, 0, 2, "NORMAL"),
+            new Backend.Flow("syn-flood", "TCP", 60, 20000, 2500, .92, 0, 2, "DOS"),
+            new Backend.Flow("port-scan", "TCP", 120, 900, 220, .72, 0, 75, "PORT_SCAN"),
+            new Backend.Flow("login-failures", "TCP", 1500, 8000, 30, .15, 24, 1, "BRUTE_FORCE")
+        );
     }
 
     private void refresh() {
