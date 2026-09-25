@@ -9,14 +9,23 @@ This is a compact version of [AgasthiDoshi's Java network intrusion detection de
 | `Backend.java` | CSV validation, model loading, prediction, metrics, and CLI export |
 | `Frontend.java` | Desktop table, CSV import, threshold control, and export |
 | `model.txt` | Saved 35-node decision tree |
-| `requirement.txt` | Runtime and build requirements |
+| `requirement.txt` | Pip-compatible note about requirements; no Python packages |
 | `README.md` | Setup and CSV format |
 
 The source project trained decision-tree, forest, and SVM models in memory but did not ship a saved model. This edition saves a single decision tree trained on its original `data/train.csv` synthetic flows. It uses the same nine transformed input features. The training CSV is not needed at runtime. The model is a project-specific demonstration artifact; no outside model with an incompatible feature schema was substituted.
 
 ## Run
 
-Install a JDK 17 or newer. From this directory:
+This program is written entirely in Java. **Pip is not needed**. `requirement.txt` contains only comments so `pip install -r requirement.txt` is valid, but it cannot install Java.
+
+Install a **JDK 17 or newer** separately, then open a new terminal and confirm both commands work:
+
+```powershell
+java -version
+javac -version
+```
+
+From this repository directory, compile and launch the desktop app:
 
 ```sh
 mkdir build

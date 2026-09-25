@@ -1,3 +1,4 @@
-JDK 17 or newer (java and javac on PATH)
-Java Swing/AWT desktop environment for Frontend.java
-No Python packages, Maven, Gradle, or third-party Java libraries required
+# This project has no Python package dependencies.
+# `pip install -r requirement.txt` succeeds but installs nothing.
+# Install JDK 17 or newer separately; java and javac must be on PATH.
+# Java Swing/AWT is included with the JDK.
