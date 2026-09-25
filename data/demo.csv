@@ -1,7 +1,0 @@
-id,protocol,duration_ms,bytes,packets_per_second,syn_ratio,failed_logins,destination_ports,label
-normal-web,TCP,600,12000,42,0.1,0,2,NORMAL
-syn-flood,TCP,60,20000,2500,0.92,0,2,DOS
-port-scan,TCP,120,900,220,0.72,0,75,PORT_SCAN
-login-failures,TCP,1500,8000,30,0.15,24,1,BRUTE_FORCE
-large-transfer,TCP,8000,5000000,100,0.05,0,1,EXFILTRATION
-unlabeled-flow,UDP,400,18000,55,0,0,3,UNKNOWN

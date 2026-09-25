@@ -1,0 +1,3 @@
+JDK 17 or newer (java and javac on PATH)
+Java Swing/AWT desktop environment for Frontend.java
+No Python packages, Maven, Gradle, or third-party Java libraries required
