@@ -26,7 +26,7 @@ public final class Frontend extends JFrame {
         @Override public boolean isCellEditable(int row, int column) { return false; }
     };
     private final JLabel summary = new JLabel("Open a CSV file to analyze network flows.");
-    private final JLabel source = new JLabel("Example synthetic flows — use Open CSV for your own data.");
+    private final JLabel source = new JLabel("Example synthetic flows - use Open CSV for your own data.");
     private final JSlider threshold = new JSlider(10, 90, 50);
     private final JCheckBox alertsOnly = new JCheckBox("Alerts only");
 
